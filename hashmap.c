@@ -67,22 +67,22 @@ void enlarge(HashMap * map) {
   map->size=0;
   for(i=0;i<map->capacity/2;i++){
     if(aux[i]!=NULL && aux[i]->key!=NULL){
-      insertMap(map,aux[i]->key,aux[i]->value);
-      
+      insertMap(map,aux[i]->key,aux[i]->value); 
     }
-    
   }
   free(aux);
-  
-
 }
 
   
 
 
 HashMap * createMap(long capacity) {
-
-    return NULL;
+  HashMap * map = (HashMap *)malloc(sizeof(HashMap));
+  map->buckets = (Pair **)malloc(sizeof(Pair *)*capacity);
+  map->size=0;
+  map->capacity=capacity;
+  map->current=-1;
+  return map;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
